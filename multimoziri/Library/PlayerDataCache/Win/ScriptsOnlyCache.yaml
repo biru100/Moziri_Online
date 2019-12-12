@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - Com.MyCompany.MyGame.Launcher
     - Com.MyCompany.MyGame.PlayerManager
     - Com.MyCompany.MyGame.PlayerNameInputField
+    - Com.MyCompany.MyGame.PlayerUI
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -30,6 +31,8 @@ ScriptsOnlyBuild:
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
+    UnityEditor.UI.dll:
+    - UnityEditor.UI.TextEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -131,6 +134,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11942}
     - Class: 114
       Script: {instanceID: 11950}
+    - Class: 114
+      Script: {instanceID: 15874}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -200,6 +205,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11830}
     - Class: 114
       Script: {instanceID: 11908}
+    - Class: 114
+      Script: {instanceID: 15874}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1137,7 +1144,7 @@ ScriptsOnlyBuild:
     className: Asteroid
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 582748499052697db64f3a1f56316013
     assemblyName: Assembly-CSharp.dll
     namespaceName: Com.MyCompany.MyGame
     className: PlayerManager
@@ -1519,6 +1526,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 46e2d736597ec0ce341b6a866a2067f4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Com.MyCompany.MyGame
+    className: PlayerUI
   platform: 5
   scenePathNames:
   - Assets/Scenes/Launcher.unity

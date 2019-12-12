@@ -162,7 +162,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -420,7 +420,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &1607034398244147212
 PrefabInstance:
@@ -487,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -219
       objectReference: {fileID: 0}
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
@@ -497,17 +497,17 @@ PrefabInstance:
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
@@ -517,7 +517,7 @@ PrefabInstance:
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5244867341268525239, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
@@ -539,6 +539,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leave button
       objectReference: {fileID: 0}
+    - target: {fileID: 6888709986605658231, guid: 51e609c10338bf1409d4c1516a533b1e,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888709986605658231, guid: 51e609c10338bf1409d4c1516a533b1e,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888709986605658231, guid: 51e609c10338bf1409d4c1516a533b1e,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888709986605658231, guid: 51e609c10338bf1409d4c1516a533b1e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4ac41242a149eb84d9cc13b71e5837ec,
+        type: 3}
     - target: {fileID: 9142579705772633398, guid: 51e609c10338bf1409d4c1516a533b1e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
