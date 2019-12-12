@@ -26,7 +26,8 @@ namespace Com.MyCompany.MyGame {
 #endif
         }
         void FixedUpdate () {
-            transform.Translate (new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")));
+            if(photonView.IsMine)
+                transform.Translate (new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")));
         }
 #if !UNITY_5_4_OR_NEWER
         /// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
