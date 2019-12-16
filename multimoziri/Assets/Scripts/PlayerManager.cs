@@ -27,31 +27,10 @@ namespace Com.MyCompany.MyGame {
             } else {
                 Debug.LogWarning ("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
             }
-#if UNITY_5_4_OR_NEWER
-            // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) => {
-                CalledOnLevelWasLoaded (scene.buildIndex);
-            };
-#endif
         }
         void FixedUpdate () {
             if (photonView.IsMine)
                 transform.Translate (new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")) * Time.deltaTime);
-        }
-#if !UNITY_5_4_OR_NEWER
-        /// <summary>See CalledOnLevelWasLoaded. Outdated in Unity 5.4.</summary>
-        void OnLevelWasLoaded (int level) {
-            CalledOnLevelWasLoaded (level);
-        }
-#endif
-
-        void CalledOnLevelWasLoaded (int level) {
-            // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
-            if (!Physics.Raycast (transform.position, -Vector3.up, 5f)) {
-                transform.position = new Vector3 (0f, 5f, 0f);
-            }
-            GameObject _uiGo = Instantiate (this.playerUiPrefab);
-            _uiGo.SendMessage ("SetTarget", this, SendMessageOptions.RequireReceiver);
         }
     }
 }

@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - Com.MyCompany.MyGame.PlayerManager
     - Com.MyCompany.MyGame.PlayerNameInputField
     - Com.MyCompany.MyGame.PlayerUI
+    - Com.MyCompany.MyGame.moziriChat
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -30,17 +31,16 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
-    UnityEditor.UI.dll:
-    - UnityEditor.UI.TextEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
+    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
@@ -83,59 +83,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9690}
     - Class: 114
-      Script: {instanceID: 9840}
+      Script: {instanceID: 9752}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9842}
     - Class: 114
-      Script: {instanceID: 9898}
+      Script: {instanceID: 9862}
     - Class: 114
-      Script: {instanceID: 9942}
+      Script: {instanceID: 9900}
     - Class: 114
-      Script: {instanceID: 10106}
+      Script: {instanceID: 9944}
     - Class: 114
-      Script: {instanceID: 10340}
+      Script: {instanceID: 10110}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10344}
     - Class: 114
-      Script: {instanceID: 10492}
+      Script: {instanceID: 10430}
     - Class: 114
-      Script: {instanceID: 10584}
+      Script: {instanceID: 10496}
     - Class: 114
-      Script: {instanceID: 10692}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 10762}
+      Script: {instanceID: 10696}
     - Class: 114
-      Script: {instanceID: 10886}
+      Script: {instanceID: 10766}
     - Class: 114
-      Script: {instanceID: 10938}
+      Script: {instanceID: 10890}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 10942}
     - Class: 114
-      Script: {instanceID: 11098}
+      Script: {instanceID: 11018}
     - Class: 114
-      Script: {instanceID: 11106}
+      Script: {instanceID: 11102}
     - Class: 114
-      Script: {instanceID: 11120}
+      Script: {instanceID: 11110}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11124}
     - Class: 114
-      Script: {instanceID: 11322}
+      Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11328}
+      Script: {instanceID: 11326}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11464}
+      Script: {instanceID: 11352}
     - Class: 114
-      Script: {instanceID: 11830}
+      Script: {instanceID: 11468}
     - Class: 114
-      Script: {instanceID: 11908}
+      Script: {instanceID: 11836}
     - Class: 114
-      Script: {instanceID: 11942}
+      Script: {instanceID: 11914}
     - Class: 114
-      Script: {instanceID: 11950}
+      Script: {instanceID: 11948}
     - Class: 114
-      Script: {instanceID: 15874}
+      Script: {instanceID: 11956}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -186,27 +186,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9690}
     - Class: 114
-      Script: {instanceID: 9898}
+      Script: {instanceID: 9752}
     - Class: 114
-      Script: {instanceID: 9942}
+      Script: {instanceID: 9900}
     - Class: 114
-      Script: {instanceID: 10414}
+      Script: {instanceID: 9944}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10022}
     - Class: 114
-      Script: {instanceID: 10762}
+      Script: {instanceID: 10060}
     - Class: 114
-      Script: {instanceID: 10886}
+      Script: {instanceID: 10418}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 10430}
     - Class: 114
-      Script: {instanceID: 11464}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 11830}
+      Script: {instanceID: 10766}
     - Class: 114
-      Script: {instanceID: 11908}
+      Script: {instanceID: 10890}
     - Class: 114
-      Script: {instanceID: 15874}
+      Script: {instanceID: 11124}
+    - Class: 114
+      Script: {instanceID: 11352}
+    - Class: 114
+      Script: {instanceID: 11468}
+    - Class: 114
+      Script: {instanceID: 11836}
+    - Class: 114
+      Script: {instanceID: 11914}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -278,6 +286,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: 46e2d736597ec0ce341b6a866a2067f4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Com.MyCompany.MyGame
+    className: PlayerUI
   - hash:
       serializedVersion: 2
       Hash: 2163458cae41cb1735c8b06fc34a9582
@@ -458,6 +472,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: Photon.Realtime.Demo
     className: ConnectAndJoinRandomLb
+  - hash:
+      serializedVersion: 2
+      Hash: a1976cef954ac77133a18447c721ab9d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Com.MyCompany.MyGame
+    className: moziriChat
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -646,7 +666,7 @@ ScriptsOnlyBuild:
     className: PunCockpitEmbed
   - hash:
       serializedVersion: 2
-      Hash: d1f07c9e64b7817e6271f80bb03de25f
+      Hash: 76ce9891baff3800835a8649bb230c8f
     assemblyName: Assembly-CSharp.dll
     namespaceName: Com.MyCompany.MyGame
     className: GameManager
@@ -1264,6 +1284,12 @@ ScriptsOnlyBuild:
     className: OnStartDelete
   - hash:
       serializedVersion: 2
+      Hash: c6d791020da9b6773ce7535294856134
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ChatManager
+  - hash:
+      serializedVersion: 2
       Hash: c656dcc13ae391b68d594cc8f9c590b0
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1526,14 +1552,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 46e2d736597ec0ce341b6a866a2067f4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Com.MyCompany.MyGame
-    className: PlayerUI
   platform: 5
   scenePathNames:
   - Assets/Scenes/Launcher.unity
   - Assets/Scenes/Room For 1.unity
-  playerPath: "C:/Users/gywkd/Desktop/Moziri_Online/\uC2E4\uD589\uD30C\uC77C/multimoziri.exe"
+  playerPath: "C:/Users/gywkd/Desktop/\uC2E4\uD589\uD30C\uC77C/multimoziri.exe"
