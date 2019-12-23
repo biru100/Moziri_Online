@@ -1,36 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
+using Photon.Pun;
 
-namespace Com.MyCompany.MyGame {
-    public class PlayerManager : MonoBehaviourPunCallbacks {
+public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
+{ 
+    [SerializeField]
+    private GameObject playerUiPrefab;
+    Rigidbody2D ribody;
+    public static GameObject LocalPlayerInstance;
+    public static PlayerManager LocalPlayer;
+    public bool isReady = false;
 
-        [Tooltip ("The local player instance. Use this to know if the local player is represented in the Scene")]
-        public static GameObject LocalPlayerInstance;
-        [Tooltip ("The Player's UI GameObject Prefab")]
-        [SerializeField]
-        private GameObject playerUiPrefab;
-        private void Awake () {
-            if (photonView.IsMine) {
-                PlayerManager.LocalPlayerInstance = this.gameObject;
-            }
-            // #Critical
-            // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
-            transform.position = Vector2.zero;
-            DontDestroyOnLoad (this.gameObject);
+    private void OnDestroy()
+    {
+        GameManager.playerlist.Remove(this);
+    }
+
+    private void Awake()
+    {
+        if (photonView.IsMine)
+        {
+            PlayerManager.LocalPlayer = this;
+            PlayerManager.LocalPlayerInstance = gameObject;
         }
-        private void Start () {
-            if (playerUiPrefab != null) {
-                GameObject _uiGo = Instantiate (playerUiPrefab);
-                _uiGo.SendMessage ("SetTarget", this, SendMessageOptions.RequireReceiver);
-            } else {
-                Debug.LogWarning ("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
-            }
+        GameManager.playerlist.Add(this);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(isReady);
         }
-        void FixedUpdate () {
-            if (photonView.IsMine)
-                transform.Translate (new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")) * Time.deltaTime);
+        else
+        {
+            isReady = (bool)stream.ReceiveNext();
         }
+    }
+
+    void Start()
+    {
+        ribody = GetComponent<Rigidbody2D>();
+
+        if (playerUiPrefab != null)
+        {
+            GameObject _uiGo = Instantiate(playerUiPrefab);
+            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+        }
+    }
+
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        Move();
+    }
+
+    void Move()
+    {
+        if(photonView.IsMine)
+            ribody.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    }
+
+    public void Ready(bool chk)
+    {
+        isReady = chk;
     }
 }
