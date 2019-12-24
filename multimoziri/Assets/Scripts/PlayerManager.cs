@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 { 
     [SerializeField]
     private GameObject playerUiPrefab;
+    [SerializeField]
+    private float speed;
     Rigidbody2D ribody;
     public static GameObject LocalPlayerInstance;
     public static PlayerManager LocalPlayer;
@@ -14,7 +16,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void OnDestroy()
     {
-        GameManager.playerlist.Remove(this);
+        PlayerListManager.playerlist.Remove(this);
     }
 
     private void Awake()
@@ -23,8 +25,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             PlayerManager.LocalPlayer = this;
             PlayerManager.LocalPlayerInstance = gameObject;
+            PlayerListManager.playernumber = photonView.Owner.ActorNumber;
         }
-        GameManager.playerlist.Add(this);
+        PlayerListManager.playerlist.Add(this);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -64,7 +67,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void Move()
     {
         if(photonView.IsMine)
-            ribody.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            ribody.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed;
     }
 
     public void Ready(bool chk)

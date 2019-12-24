@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUiPrefab: {fileID: 8936371469439456897, guid: beaada24876a1e84780cd0d5ad1b8406,
     type: 3}
+  speed: 2
   isReady: 0
 --- !u!61 &4287756358891446522
 BoxCollider2D:

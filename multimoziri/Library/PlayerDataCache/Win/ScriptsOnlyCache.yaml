@@ -3,6 +3,8 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - GameManager
     - Launcher
+    - LobbyManager
+    - PlayerListManager
     - PlayerManager
     - PlayerNameInputField
     - PlayerUI
@@ -30,6 +32,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -69,27 +72,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9898}
     - Class: 114
-      Script: {instanceID: 9942}
+      Script: {instanceID: 10376}
     - Class: 114
-      Script: {instanceID: 10414}
+      Script: {instanceID: 10428}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10758}
     - Class: 114
-      Script: {instanceID: 10762}
+      Script: {instanceID: 10766}
     - Class: 114
-      Script: {instanceID: 10886}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11634}
     - Class: 114
-      Script: {instanceID: 11630}
+      Script: {instanceID: 11684}
     - Class: 114
-      Script: {instanceID: 11680}
+      Script: {instanceID: 11834}
     - Class: 114
-      Script: {instanceID: 11830}
-    - Class: 114
-      Script: {instanceID: 11908}
-    - Class: 114
-      Script: {instanceID: 11924}
+      Script: {instanceID: 11912}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -160,47 +159,47 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10340}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10428}
     - Class: 114
-      Script: {instanceID: 10492}
+      Script: {instanceID: 10494}
     - Class: 114
-      Script: {instanceID: 10584}
+      Script: {instanceID: 10586}
     - Class: 114
-      Script: {instanceID: 10692}
+      Script: {instanceID: 10694}
     - Class: 114
-      Script: {instanceID: 10762}
+      Script: {instanceID: 10766}
     - Class: 114
-      Script: {instanceID: 10886}
+      Script: {instanceID: 10890}
     - Class: 114
-      Script: {instanceID: 10938}
+      Script: {instanceID: 10942}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 11018}
     - Class: 114
-      Script: {instanceID: 11098}
+      Script: {instanceID: 11102}
     - Class: 114
-      Script: {instanceID: 11106}
+      Script: {instanceID: 11110}
     - Class: 114
-      Script: {instanceID: 11120}
+      Script: {instanceID: 11124}
     - Class: 114
-      Script: {instanceID: 11312}
+      Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11322}
+      Script: {instanceID: 11326}
     - Class: 114
-      Script: {instanceID: 11328}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11630}
+      Script: {instanceID: 11634}
     - Class: 114
-      Script: {instanceID: 11680}
+      Script: {instanceID: 11684}
     - Class: 114
-      Script: {instanceID: 11830}
+      Script: {instanceID: 11834}
     - Class: 114
-      Script: {instanceID: 11908}
+      Script: {instanceID: 11912}
     - Class: 114
-      Script: {instanceID: 11942}
+      Script: {instanceID: 11946}
     - Class: 114
-      Script: {instanceID: 11950}
+      Script: {instanceID: 11954}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -230,6 +229,71 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 225
+      Script: {instanceID: 0}
+    Assets/Scenes/LobbyScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 9690}
+    - Class: 114
+      Script: {instanceID: 9898}
+    - Class: 114
+      Script: {instanceID: 9942}
+    - Class: 114
+      Script: {instanceID: 10376}
+    - Class: 114
+      Script: {instanceID: 10416}
+    - Class: 114
+      Script: {instanceID: 10428}
+    - Class: 114
+      Script: {instanceID: 10766}
+    - Class: 114
+      Script: {instanceID: 10890}
+    - Class: 114
+      Script: {instanceID: 11464}
+    - Class: 114
+      Script: {instanceID: 11634}
+    - Class: 114
+      Script: {instanceID: 11684}
+    - Class: 114
+      Script: {instanceID: 11834}
+    - Class: 114
+      Script: {instanceID: 11912}
+    - Class: 114
+      Script: {instanceID: 11928}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -637,6 +701,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerListManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
     className: PunPlayerScores
@@ -657,7 +727,7 @@ ScriptsOnlyBuild:
       Hash: 2bd439f13cdd4a6b428b257505885db9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: GameManager
+    className: LobbyManager
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -844,6 +914,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: d1f07c9e64b7817e6271f80bb03de25f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
   - hash:
       serializedVersion: 2
       Hash: 259988b2d867e1586634d64379c5ff81
@@ -1284,7 +1360,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 13887e76265803ac164d3507b4d52bf1
+      Hash: 7bf8209cfa7704c07ba02c7a0e87abf8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerManager
@@ -1537,5 +1613,6 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Launcher.unity
+  - Assets/Scenes/LobbyScene.unity
   - Assets/Scenes/GameScene.unity
   playerPath: "C:/Users/gywkd/Desktop/\uC2E4\uD589\uD30C\uC77C/multimoziri.exe"
