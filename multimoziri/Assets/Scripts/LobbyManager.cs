@@ -28,6 +28,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
         }
+        if(PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            PhotonNetwork.Instantiate("PlayerListManager", Vector3.zero, Quaternion.identity);
         SetPlayerCnt();
     }
 
@@ -86,6 +88,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                 Startcnt = 5;
                 starttime = Time.time;
                 readytext.gameObject.SetActive(true);
+                PlayerListManager.SetMafia();
             }
             if (starttime + 1 <= Time.time)
             {
@@ -95,8 +98,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             readytext.text = "게임 시작 중..." + Startcnt.ToString();
             if (Startcnt < 1)
             {
-                PlayerListManager.currentplayer = PhotonNetwork.CurrentRoom.PlayerCount;
-                PlayerListManager.playerlist.Clear();
+                if (PlayerListManager.mafialist[PlayerListManager.playernumber - 1])
+                    PlayerManager.LocalPlayer.ismafia = true;
+                float angle = 360 / PlayerListManager.currentplayer * PlayerListManager.playernumber * Mathf.Deg2Rad;
+                PlayerManager.LocalPlayerInstance.transform.position = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0) * 10f;
                 PhotonNetwork.LoadLevel("GameScene");
             }
         }
@@ -109,6 +114,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void SetPlayerCnt()
     {
         readycnt = 0;
+        Debug.Log(PlayerListManager.playerlist.Count);
         for (int i = 0; i < PlayerListManager.playerlist.Count; i++)
         {
             if (PlayerListManager.playerlist[i].isReady)

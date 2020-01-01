@@ -7,18 +7,34 @@ using Photon.Pun;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject playerPrefab;
+    public Text mafiatext;
     bool chk = true;
+    GameObject Char_Sel;
     private void Awake()
     {
-        if (PlayerManager.LocalPlayerInstance == null)
-        {
-            float angle = (360 / PlayerListManager.currentplayer * PlayerListManager.playernumber) * Mathf.Deg2Rad;
-            Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-            PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0f), Quaternion.identity, 0);
-        }
+        if (PlayerManager.LocalPlayer.ismafia)
+            mafiatext.text = "악인";
         else
+            mafiatext.text = "시민";
+        Invoke("StartCharacterSelect", 1.0f);
+    }
+    
+
+    void StartCharacterSelect()
+    {
+        if (PlayerListManager.playernumber == 1)
         {
-            Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+            Char_Sel = PhotonNetwork.Instantiate("CharacterSelect", Vector3.zero, Quaternion.identity);
         }
+        Invoke("RemoveCharacterSelect", 3.0f);
+    }
+
+    void RemoveCharacterSelect()
+    {
+        if(Char_Sel == null)
+        {
+            Char_Sel = GameObject.FindGameObjectWithTag("CharacterSelect");
+        }
+        Char_Sel.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

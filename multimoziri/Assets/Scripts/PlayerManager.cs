@@ -9,11 +9,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     private GameObject playerUiPrefab;
     [SerializeField]
     private float speed;
+    GameObject ui;
     Rigidbody2D ribody;
     public static GameObject LocalPlayerInstance;
     public static PlayerManager LocalPlayer;
     public bool isReady = false;
-
+    public bool ismafia = false;
     private void OnDestroy()
     {
         PlayerListManager.playerlist.Remove(this);
@@ -28,11 +29,12 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             PlayerListManager.playernumber = photonView.Owner.ActorNumber;
         }
         PlayerListManager.playerlist.Add(this);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if(stream.IsWriting)
+        if (stream.IsWriting)
         {
             stream.SendNext(isReady);
         }
@@ -45,16 +47,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void Start()
     {
         ribody = GetComponent<Rigidbody2D>();
-
-        if (playerUiPrefab != null)
-        {
-            GameObject _uiGo = Instantiate(playerUiPrefab);
-            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
-        }
-        else
-        {
-            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
-        }
+        SetUI();
     }
 
 
@@ -62,6 +55,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     void FixedUpdate()
     {
         Move();
+        if (ui == null)
+            SetUI();
     }
 
     void Move()
@@ -73,5 +68,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     public void Ready(bool chk)
     {
         isReady = chk;
+    }
+
+    void SetUI()
+    {
+        if (playerUiPrefab != null)
+        {
+            ui = Instantiate(playerUiPrefab);
+            ui.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+        }
     }
 }
